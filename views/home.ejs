@@ -13,6 +13,12 @@
                     socket.emit('NEW_USER_SIGN_UP', username);
                 });
 
+                $('.li-room').click(function() {
+                    $('.li-room').removeClass('red');
+                    $(this).addClass('red');
+                    console.log($(this).attr('id'));
+                });
+
                 socket.on('SERVER_CONFIRM_USERNAME', isOK => {
                     if (isOK) {
                         $('#div-sign-up').hide();
