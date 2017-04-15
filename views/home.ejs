@@ -22,8 +22,9 @@
                 $('.li-room').click(function() {
                     $('.li-room').removeClass('red');
                     $(this).addClass('red');
+                    const oldRoom = roomName;
                     roomName = $(this).attr('id');
-                    socket.emit('CLIENT_JOIN_ROOM', roomName);
+                    socket.emit('CLIENT_JOIN_ROOM', { oldRoom, roomName });
                 });
 
                 socket.on('SERVER_SEND_NEW_MESSAGE', message => {
