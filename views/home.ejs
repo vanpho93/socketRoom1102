@@ -7,7 +7,18 @@
         <script>
             const socket = io.connect();
             $(document).ready(() => {
-                console.log('ready')
+                $('#div-container-chat').hide();
+                $('#btn-sign-up').click(() => {
+                    const username = $('#txt-username').val();
+                    socket.emit('NEW_USER_SIGN_UP', username);
+                });
+
+                socket.on('SERVER_CONFIRM_USERNAME', isOK => {
+                    if (isOK) {
+                        $('#div-sign-up').hide();
+                        $('#div-container-chat').show();
+                    } 
+                });
             });
         </script>
         <style>
