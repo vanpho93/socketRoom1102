@@ -16,8 +16,9 @@
                 socket.on('SERVER_CONFIRM_USERNAME', isOK => {
                     if (isOK) {
                         $('#div-sign-up').hide();
-                        $('#div-container-chat').show();
-                    } 
+                        return $('#div-container-chat').show();
+                    }
+                    alert('Vui long chon username khac!');
                 });
             });
         </script>
