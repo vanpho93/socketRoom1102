@@ -6,6 +6,7 @@
         <script src="jquery-3.2.0.min.js"></script>
         <script>
             const socket = io.connect();
+            let roomName;
             $(document).ready(() => {
                 $('#div-container-chat').hide();
                 $('#btn-sign-up').click(() => {
@@ -13,10 +14,20 @@
                     socket.emit('NEW_USER_SIGN_UP', username);
                 });
 
+                $('#btn-send').click(() => {
+                    const message = $('#txt-message').val();
+                    socket.emit('CLIENT_SEND_MESSAGE', { roomName, message });
+                });
+
                 $('.li-room').click(function() {
                     $('.li-room').removeClass('red');
                     $(this).addClass('red');
-                    console.log($(this).attr('id'));
+                    roomName = $(this).attr('id');
+                    socket.emit('CLIENT_JOIN_ROOM', roomName);
+                });
+
+                socket.on('SERVER_SEND_NEW_MESSAGE', message => {
+                    console.log(message);
                 });
 
                 socket.on('SERVER_CONFIRM_USERNAME', isOK => {

@@ -21,4 +21,13 @@ io.on('connection', socket => {
         }
         socket.emit('SERVER_CONFIRM_USERNAME', false);
     });
+
+    socket.on('CLIENT_JOIN_ROOM', roomName => {
+        socket.join(roomName);
+    });
+
+    socket.on('CLIENT_SEND_MESSAGE', msgOject => {
+        const { roomName, message } = msgOject;
+        socket.to(roomName).emit('SERVER_SEND_NEW_MESSAGE', message);
+    });
 });
