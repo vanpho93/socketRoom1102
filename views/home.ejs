@@ -14,9 +14,56 @@
             .red {
                 color: red;
             }
+            #div-container-chat {
+                display: flex;
+                flex-direction: row;
+                height: 300px;
+            }
+            #div-chat {
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                background-color: yellow
+            }
+            #div-list-container {
+                flex: 6;
+                background-color: green;
+            }
+            #div-controll {
+                display: flex;
+                justify-content: center;
+                flex: 1;
+                background-color: gray;
+            }
         </style>
     </head>
     <body>
-        <h1>KhoaPham Training</h1>
+        <div id="wrapper">
+            <div id="div-sign-up">
+                <input type="text" id="txt-username" placeholder="Enter your username" />
+                <br /><br />
+                <button id="btn-sign-up">Sign Up</button>
+            </div>
+            <div id="div-container-chat">
+                <div id="div-list">
+                    <ul id="ul-list-room">
+                        <li>Football</li>
+                        <li>Tenis</li>
+                        <li>Ping Pong</li>
+                    </ul>
+                </div>
+                <div id="div-chat">
+                    <div id="div-list-container">
+                        <ul id="ul-list-message">
+
+                        </ul>
+                    </div>
+                    <div id="div-controll">
+                        <input type="text" placeholder="Enter your message" id="txt-message"/>
+                        <button id="btn-send">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -14,5 +14,3 @@ app.get('/', (req, res) => res.render('home'));
 io.on('connection', socket => {
     console.log(socket.id);
 });
-
-//emit, on. on
